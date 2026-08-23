@@ -1,56 +1,93 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "I make large-scale systems predictable"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-This is the front page of a website that is powered by the [Academic Pages template](https://github.com/academicpages/academicpages.github.io) and hosted on GitHub pages. [GitHub pages](https://pages.github.com) is a free service in which websites are built and hosted from code and data stored in a GitHub repository, automatically updating when a new commit is made to the repository. This template was forked from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/) created by Michael Rose, and then extended to support the kinds of content that academics have: publications, talks, teaching, a portfolio, blog posts, and a dynamically-generated CV. Incidentally, these same features make it a great template for anyone that needs to show off a professional template!
+I'm Minji Son, a software engineer at Samsung Electronics — one of three headquarters engineers building the **Samsung Messaging Platform (SMP)**, push-notification relay infrastructure serving 1.26 billion Galaxy devices and relaying over 600 million notifications daily. At this scale, I've cut worst-case query latency in a multi-billion-row warehouse from 6.5 minutes to under one, and kept inference-backed pipelines running through traffic surges. I care about systems whose performance you can predict, measure, and explain.
 
- You can fork [this template](https://github.com/academicpages/academicpages.github.io) right now, modify the configuration and Markdown files, add your own PDFs and other content, and have your own site for free, with no ads!
+I'm applying to MS programs in computer science for Fall 2027, to work on **resource management for ML workloads on shared, containerized GPU infrastructure** — because sharing is where predictability breaks, and sharing is economically unavoidable. Concretely: GPU scheduling that contains cross-tenant interference, and inference serving that holds predictable tail latency under co-location. I first saw this problem as an undergraduate, when my experiments showed MPS-based GPU sharing accelerating co-located workloads right up to cache saturation — then inverting. Industry has since shown me the same failure mode at production scale. I want to solve it properly.
 
-A data-driven personal website
-======
-Like many other Jekyll-based GitHub Pages templates, Academic Pages makes you separate the website's content from its form. The content & metadata of your website are in structured Markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various Markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your Markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over - just be sure to save the Markdown files! You can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+<img src="/images/journey-timeline.png" alt="Research journey: from OS memory management, through GPU sharing in containers and production systems at scale, toward graduate research on GPU scheduling for ML workloads" style="width:100%; margin: 1em 0 0.5em;">
 
-For those users that need more advanced functionality, the template also supports the following popular tools:
-- [MathJax](https://www.mathjax.org/) for mathematical equations
-- [Mermaid](https://mermaid.js.org/) for diagraming
-- [Plotly](https://plotly.com/javascript/) for plotting
+<div class="stat-cards">
+  <div class="stat-card">
+    <span class="stat-num">1.26B</span>
+    <span class="stat-label">active devices served by SMP</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">600M+</span>
+    <span class="stat-label">push notifications relayed daily</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">7–13×</span>
+    <span class="stat-label">worst-case query speedup<br>(6.5 min → under 1 min)</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">87%</span>
+    <span class="stat-label">of content reviews automated<br>by ML pipeline I integrated</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">2</span>
+    <span class="stat-label">peer-reviewed publications<br>(1 first-author)</span>
+  </div>
+</div>
 
-Getting started
-======
-1. Register a GitHub account if you don't have one and confirm your e-mail (required!)
-1. Fork [this template](https://github.com/academicpages/academicpages.github.io) by clicking the "Use this template" button in the top right. 
-1. Go to the repository's settings (rightmost item in the tabs that start with "Code", should be below "Unwatch"). Rename the repository "[your GitHub username].github.io", which will also be your website's URL.
-1. Set site-wide configuration and create content & metadata (see below -- also see [this set of diffs](https://archive.is/3TPas) showing what files were changed to set up [an example site](https://getorg-testacct.github.io) for a user with the username "getorg-testacct")
-1. Upload any files (like PDFs, .zip files, etc.) to the files/ directory. They will appear at https://[your GitHub username].github.io/files/example.pdf.  
-1. Check status by going to the repository settings, in the "GitHub pages" section
+## How I got here
 
-Site-wide configuration
-------
-The main configuration file for the site is in the base directory in [_config.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_config.yml), which defines the content in the sidebars and other site-wide features. You will need to replace the default variables with ones about yourself and your site's github repository. The configuration file for the top menu is in [_data/navigation.yml](https://github.com/academicpages/academicpages.github.io/blob/master/_data/navigation.yml). For example, if you don't have a portfolio or blog posts, you can remove those items from that navigation.yml file to remove them from the header. 
+The timeline above is one question changing layers. As an undergraduate at **Sungkyunkwan University**, I profiled Linux's zswap subsystem on real mobile devices, then spent two years in Prof. HwanSoo Han's lab characterizing **GPU performance in container environments** — first-author work (KSC 2018) showing that containerization overhead is constant rather than proportional to runtime, and that cache sensitivity predicts when MPS-based GPU sharing helps or hurts. [Read more →](/research/)
 
-Create content & metadata
-------
-For site content, there is one Markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a Markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each Markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
+Seven years of production engineering since — from a global OEM's connected-car backend at KT to SMP at Samsung — have kept me close to the same question at ever-larger scale: diagnosing a 5–10x regression in a multi-billion-row warehouse, operating ML inference in a serving path where tail latency and multi-tenant contention dominate, and hardening Kubernetes autoscaling so scale-in never drops traffic. These are the resource-management problems I started with in the lab, and I want to spend the next years working on them properly. [Read more →](/work/)
 
-**Markdown generator**
+## Publications
 
-The repository includes [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual Markdown files that will be properly formatted for the Academic Pages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the Markdown files, then commit and push them to the GitHub repository.
+1. **MinJi Son**, HyunJun Kim, and HwanSoo Han, "Analyzing GPU Performance on Containers and Characteristics of Multi-Task Scheduling," *Korea Software Congress (KSC)*, 2018.
+2. MinSeop Jung, DongEun Lee, **MinJi Son**, JeongHwan Park, and HwanSoo Han, "Performance Analysis of Spark Application through Task Execution," *Korea Software Congress (KSC)*, 2017.
 
-How to edit your site's GitHub repository
-------
-Many people use a git client to create files on their local computer and then push them to GitHub's servers. If you are not familiar with git, you can directly edit these configuration and Markdown files directly in the github.com interface. Navigate to a file (like [this one](https://github.com/academicpages/academicpages.github.io/blob/master/_talks/2012-03-01-talk-1.md) and click the pencil icon in the top right of the content preview (to the right of the "Raw | Blame | History" buttons). You can delete a file by clicking the trashcan icon to the right of the pencil icon. You can also create new files or upload files by navigating to a directory and clicking the "Create new file" or "Upload files" buttons. 
+## Elsewhere on this site
 
-Example: editing a Markdown file for a talk
-![Editing a Markdown file for a talk](/images/editing-talk.png)
+- [Research](/research/) — my research experience and where it's headed
+- [Work](/work/) — seven years of production systems engineering, told as a methodology
+- [Projects](/projects/) — Infrastructure-as-Code at enterprise scale, and older things I still like
+- [Activities](/activities/) — teaching, research programs, and community
+- [CV](/files/Minji_Son_CV.pdf) — the one-page version of all of the above
 
-For more info
-------
-More info about configuring Academic Pages can be found in [the guide](https://academicpages.github.io/markdown/), the [growing wiki](https://github.com/academicpages/academicpages.github.io/wiki), and you can always [ask a question on GitHub](https://github.com/academicpages/academicpages.github.io/discussions). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+<style>
+/* 카드 스타일 — 재사용하려면 assets/css/main.scss로 이동 추천 */
+.stat-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 1.2em 0 2em;
+}
+.stat-card {
+  flex: 1 1 0;          /* 5개 균등 분할 — 한 줄 정렬 */
+  min-width: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 14px 10px;
+  text-align: center;
+  background: #fff;
+}
+@media (max-width: 700px) {
+  .stat-card { flex: 1 1 45%; }  /* 모바일: 2열 그리드 */
+}
+.stat-num {
+  display: block;
+  font-size: 1.7em;
+  font-weight: 700;
+  color: #0f766e;
+  line-height: 1.1;
+}
+.stat-label {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.72em;
+  line-height: 1.35;
+  color: #64748b;
+}
+</style>
